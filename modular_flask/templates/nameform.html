@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Name Form{% endblock title %} 
+ 
+
+{% block body %}
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="m-2">
+            <div>
+                {{ form.name.label(class="form-label") }} 
+            </div>
+            <div>
+                {{ form.name(placeholder="Obi Wan Kenobi", class="form-control") }} 
+            </div>
+        </div>
+
+        <div class="m-2">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+
+    <div class="container m-3">
+        {% if name %}
+            <p class="lead">Here are the details you provided:</p>
+            <p>
+            Name:<p class="display-5">{{name}}</p> 
+
+        {% else %}
+
+            <p>No details provided.</p>
+        {% endif %} 
+    </div>
+{% endblock body %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Categories{% endblock title %} 
+
+{% block heading %}
+    Category
+{% endblock heading %}
+
+{% block body %}
+{% if form.errors %}
+    <ul class="errors">
+        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+            {% for error in field_errors %}
+                <li>{{ form[field_name].label }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<div class="m-3">
+    <p class="lead">Add new category</p>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="m-2">
+            <div>
+                {{ form.name.label(class="form-label") }} 
+            </div>
+            <div>
+                {{ form.name(placeholder="C++", class="form-control") }} 
+            </div>
+        </div>
+    
+        <div class="m-2">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+</div>
+
+<div class="m-3">
+    <h2>Categories in database</h2>
+
+    <div class="container">
+        <ul>
+            {% for category in categories %}
+            <li>{{category.name}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+</div>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %} {% block title %}Posts{% endblock title %} {% block
+heading %} Posts {% endblock heading %} {%block body %} {% if form.errors %}
+<ul class="errors">
+  {% for field_name, field_errors in form.errors|dictsort if field_errors %} {%
+  for error in field_errors %}
+  <li>{{ form[field_name].label }}: {{ error }}</li>
+  {% endfor %} {% endfor %}
+</ul>
+{% endif %}
+
+<div class="container m-3">
+  <p class="lead">Add new post</p>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="m-2">
+      <div>{{ form.title.label(class="form-label") }}</div>
+      <div>{{ form.title(class="form-control") }}</div>
+    </div>
+
+    <div class="m-2">
+      <div>{{ form.body.label(class="form-label") }}</div>
+      <div>{{ form.body(class="form-control") }}</div>
+    </div>
+
+    <div class="m-2">
+      <div>{{ form.category.label(class="form-label") }}</div>
+      <div>{{ form.category(class="form-control") }}</div>
+    </div>
+
+    <div class="m-2">
+      <div>{{ form.tags.label(class="form-label") }}</div>
+      <div>{{ form.tags(class="form-control") }}</div>
+    </div>
+
+    <div class="m-2">{{ form.submit(class="btn btn-primary") }}</div>
+  </form>
+</div>
+
+<div class="container m-3">
+  <h2>Posts in database</h2>
+
+  <div class="container">
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Body</th>
+      </tr>
+      {% for post in posts %}
+      <tr>
+        <td>{{ post.title }}</td>
+        <td>{{ post.body }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+{% endblock %}

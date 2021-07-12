@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Name Form - Validation{% endblock title %} 
+ 
+
+{% block body %}
+    <div class="container m-2">
+
+        <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="m-2">
+            <div>
+                {{ form.name.label(class="form-label") }} 
+            </div>
+            <div>
+                {{ form.name(placeholder="Obi Wan Kenobi", class="form-control") }} 
+            </div>
+            {% if form.name.errors %}
+                <div class="alert alert-warning">
+                    <ul>
+                        {% for error in form.name.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+        <div class="p-2">
+            <div>
+                {{ form.age.label(class="form-label") }}
+            </div>
+            <div>
+                {{ form.age(class="form-control") }}
+            </div>
+            {% if form.age.errors %}
+                <div class="alert alert-warning">
+                    <ul>
+                        {% for error in form.age.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    
+    
+        {{ form.submit(class="btn btn-success") }}
+        </form>
+    </div>
+
+    <div class="container m-3">
+        {% if name %}
+            <p class="lead">Here are the details you provided:</p>
+            <p>
+            Name:<p class="display-5">{{name}}</p> 
+            {% if age %}
+                Age: <p class="display-5">{{age}}</p>
+            {% endif %}
+            </p>
+
+        {% else %}
+
+            <p>No details provided.</p>
+        {% endif %} 
+    </div>
+{% endblock body %}
