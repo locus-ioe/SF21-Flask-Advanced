@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, redirect, url_for
+from flask import Flask, render_template
 from forms import NameForm, NameFormSecond
 
 app = Flask(__name__)

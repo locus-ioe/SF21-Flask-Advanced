@@ -1,8 +1,8 @@
+from flask import Flask, redirect, render_template, session, url_for
 from flask_wtf import FlaskForm
-from flask import Flask, render_template, redirect, url_for, session
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import InputRequired
 
+from wtforms import PasswordField, StringField, SubmitField
+from wtforms.validators import InputRequired
 
 app = Flask(__name__)
 app.config.from_pyfile("config.py")

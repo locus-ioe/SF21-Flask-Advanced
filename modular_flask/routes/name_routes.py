@@ -1,6 +1,8 @@
-from . import app
 from flask import render_template
+
 from modular_flask.forms import NameForm, NameFormSecond
+
+from . import app
 
 
 @app.route("/nameform", methods=["GET", "POST"])

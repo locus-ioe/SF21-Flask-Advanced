@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectField, SelectMultipleField
-from wtforms.validators import InputRequired, NumberRange
+
+from wtforms import SelectField, SelectMultipleField, StringField, SubmitField
 from wtforms.fields.html5 import IntegerField
+from wtforms.validators import InputRequired, NumberRange
 
 
 class CategoryForm(FlaskForm):

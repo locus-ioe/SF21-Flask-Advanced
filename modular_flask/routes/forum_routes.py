@@ -1,7 +1,9 @@
-from . import app
-from flask import render_template, redirect, url_for
-from modular_flask.models import Tag, Category, Post
-from modular_flask.forms import TagForm, CategoryForm, PostForm
+from flask import redirect, render_template, url_for
+
+from modular_flask.forms import CategoryForm, PostForm, TagForm
+from modular_flask.models import Category, Post, Tag
+
+from . import app, db
 
 
 @app.route("/tags", methods=["GET", "POST"])
