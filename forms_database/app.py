@@ -2,7 +2,7 @@ from flask import Flask, redirect, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 
-from wtforms import SelectField, SelectMultipleField, StringField, SubmitField
+from wtforms import SelectField, SelectMultipleField, StringField, SubmitField, widgets
 from wtforms.validators import InputRequired
 
 app = Flask(__name__)
@@ -60,6 +60,20 @@ class TagForm(FlaskForm):
     submit = SubmitField("Submit")
 
 
+# CREATE A CUSTOM WIDGET
+
+class MultiCheckboxField(SelectMultipleField):
+    """
+    A multiple-select, except displays a list of checkboxes.
+
+    Iterating the field will produce subfields, allowing custom rendering of
+    the enclosed checkbox fields.
+    """
+
+    widget = widgets.ListWidget(prefix_label=False)
+    option_widget = widgets.CheckboxInput()
+
+
 class PostForm(FlaskForm):
     title = StringField("Title", validators=[InputRequired("Title required")])
     body = StringField("Body", validators=[InputRequired("Body Required")])
@@ -67,7 +81,7 @@ class PostForm(FlaskForm):
         "Category",
         coerce=int,
     )
-    tags = SelectMultipleField("Tags", coerce=int)
+    tags = MultiCheckboxField("Tags", coerce=int)
     submit = SubmitField("Submit")
 
 

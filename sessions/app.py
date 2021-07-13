@@ -24,6 +24,8 @@ def index():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
+    # To disable csrf (NOT RECOMMENDED)
+    # form = LoginForm(meta={'csrf': False})
     if form.validate_on_submit():
         session["username"] = form.username.data
         return redirect(url_for("index"))

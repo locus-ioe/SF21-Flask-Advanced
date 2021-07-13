@@ -5,7 +5,7 @@ from wtforms.validators import InputRequired, NumberRange
 
 
 class NameForm(FlaskForm):
-    name = StringField("Full Name")  # add validation here
+    name = StringField("Full Name", validators=[InputRequired("Please add a name.")])  # add validation here
     submit = SubmitField("Submit")
 
 

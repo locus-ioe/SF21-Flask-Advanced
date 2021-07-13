@@ -1,3 +1,3 @@
-export FLASK_APP=forms_database
+export FLASK_APP=modular_flask
 export FLASK_ENV=development
 flask run 

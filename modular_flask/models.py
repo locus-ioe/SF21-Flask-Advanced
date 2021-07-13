@@ -37,3 +37,9 @@ class Category(db.Model):
 
     def __repr__(self):
         return f"<Category {self.name}>"
+
+
+if __name__ == "__main__":
+    print("Creating Database...")
+    db.create_all()
+    print("Database Created!")
