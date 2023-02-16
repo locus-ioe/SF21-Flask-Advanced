@@ -4,5 +4,5 @@ Flask-WTF==0.15.1
 greenlet==1.1.0
 itsdangerous==2.0.1
 SQLAlchemy==1.4.20
-Werkzeug==2.0.1
+Werkzeug==2.2.3
 WTForms==2.3.3
